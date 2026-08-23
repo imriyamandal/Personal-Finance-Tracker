@@ -1,109 +1,96 @@
-# 💰 Personal Finance Tracker
+# Personal Finance Management Application
 
-A simple command-line **Personal Finance Tracker** built using **Python**. This application helps users record their income and expenses, view transaction history, and monitor their financial balance.
-
-This project was created as part of my Python learning journey. The initial version was developed by following a tutorial, and I plan to enhance it by adding new features and improving the codebase.
+A polished, production-style Personal Finance Management Application featuring database-backed CRUD tracking, monthly budget threshold alerts, savings goals calculators, recurring scheduler catch-ups, ReportLab PDF report compilation, and machine-learning driven auto-categorizations, linear expense projections, anomaly checks, and dynamic savings advice.
 
 ---
 
-## 🚀 Features
+## 🛠️ Technology Stack
 
-* Add income transactions
-* Add expense transactions
-* View all transactions
-* Calculate current balance
-* Simple and easy-to-use command-line interface
-* Organized Python code
-
----
-
-## 🛠️ Technologies Used
-
-* Python 3
-* File Handling / CSV (if applicable)
-* Standard Python Libraries
+- **Backend**: FastAPI REST API + Python 3.12 + SQLite Database.
+- **Frontend**: Vite + React SPA + Custom Slate CSS Styles.
+- **Data Engine**: Pandas (Financial Ratios, Daily/Monthly Averages, Category Trends).
+- **ML Services**: TF-IDF & Multinomial Naive Bayes Classifier (Transaction Categorization), Ordinary Least Squares Linear Regression (Spending Projections), Z-Score Stat Outliers (Anomaly Detection).
+- **Automation**: Custom scheduler catches up on missed recurring transactions on server/CLI boot.
 
 ---
 
 ## 📂 Project Structure
 
 ```
-personal-finance-tracker/
-│
-├── main.py
-├── data_entry.py
-├── finance_data
-├── README.md
-└── requirements.txt
+├── backend/                  # Python FastAPI Backend
+│   ├── app/
+│   │   ├── api/              # Route controllers (JWT Auth, REST endpoints)
+│   │   ├── database/         # SQLite schema & legacy migration seeds
+│   │   ├── services/         # Budgets, Goals, Scheduler, CSV/Excel/PDF engines
+│   │   └── main.py           # FastAPI entrypoint
+│   └── tests/                # Pytest REST verification suite
+├── frontend/                 # Vite React SPA Frontend
+│   ├── src/
+│   │   ├── components/       # Login, Dashboard, Ledger, Budgets, Goals, Imports
+│   │   ├── App.jsx           # Sidebar controller & nav state
+│   │   ├── index.css         # CSS tokens & layout system
+│   │   └── main.jsx          # SPA entrypoint
+│   └── Dockerfile            # Frontend web build
+├── ml/                       # Machine Learning Services
+│   └── ml_service.py         # Classifier, Forecast Regression, Outliers
+├── main.py                   # Interactive Python CLI entrypoint
+├── data_entry.py             # CLI input validations
+├── docker-compose.yml        # Multi-service container orchestrator
+└── requirements.txt          # Python dependencies
 ```
 
 ---
 
-## ▶️ How to Run
+## 🚀 Running the Project
 
-1. Clone the repository
-
+### Option 1: Running Containerized (Recommended)
+You can run the entire system (FastAPI backend + React frontend) with a single command using Docker:
 ```bash
-git clone https://github.com/your-username/personal-finance-tracker.git
+docker-compose up --build
+```
+- **Web Dashboard**: Access the application at [http://localhost:3000](http://localhost:3000).
+- **API Swagger Documentation**: View REST specs at [http://localhost:8000/docs](http://localhost:8000/docs).
+
+---
+
+### Option 2: Running Locally
+
+#### 1. Setup the Python Backend
+Ensure Python 3.12 is installed.
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the FastAPI REST Server
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-2. Navigate to the project folder
-
+#### 2. Setup the React Frontend
+Open a **new terminal window** and run the dev server:
 ```bash
-cd personal-finance-tracker
+# Navigate to the frontend folder
+cd frontend
+
+# Install node dependencies
+npm install
+
+# Run the Vite server
+npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-3. Run the application
-
+#### 3. Running the CLI Interface
+You can interact with the tracker through a terminal-based CLI menu:
 ```bash
 python main.py
 ```
 
 ---
 
-## 🔮 Future Improvements
+## 📊 Features & Architecture
 
-I plan to improve this project by adding features such as:
-
-* User authentication
-* Expense categories
-* Monthly and yearly reports
-* Budget management
-* Data visualization using Matplotlib
-* Export reports to CSV/PDF
-* Search and filter transactions
-* SQLite database integration
-* Better project structure using OOP
-* Graphical User Interface (Tkinter/PyQt)
-* Unit testing
-* Better error handling
-
----
-
-## 📚 What I Learned
-
-Through this project, I practiced:
-
-* Python fundamentals
-* Functions
-* Loops and conditional statements
-* File handling
-* Data manipulation
-* Writing modular code
-* Building a command-line application
-
----
-
-## 🤝 Contributing
-
-Suggestions and improvements are always welcome. Feel free to fork the repository and submit a pull request.
-
----
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
----
-
-### ⭐ If you found this project useful, consider giving it a star!
+1. **Auto-Categorization**: Enter transaction descriptions (e.g., "taxi") and the Naive Bayes classifier automatically predicts and suggests categories.
+2. **Expense Forecasts**: Uses Ordinary Least Squares (OLS) to fit historic daily expense values and project next month's total spending.
+3. **Outlier Detection**: Calculates category mean and standard deviation. Transactions exceeding 2.5x standard deviations are flagged as anomalies.
+4. **PDF compilation**: Generates professional styled sheets utilizing ReportLab flowables, tables, and page headers.
+5. **Scheduler catch-up**: Recurring transaction templates calculate past due occurrences when server starts up.

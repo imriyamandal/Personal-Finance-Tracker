@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: finance_tracker_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - JWT_SECRET_KEY=7963d3fb67a07cd0be5991823908b8b0e89e02c918ffbc66ea374df616ad59f5
+      - DB_PATH=/app/data/finance.db
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: finance_tracker_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: always

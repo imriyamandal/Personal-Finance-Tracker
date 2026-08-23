@@ -1,2 +1,12 @@
 pandas
 matplotlib
+openpyxl
+reportlab
+fastapi
+uvicorn
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+pytest
+httpx
+scikit-learn
