@@ -7,7 +7,7 @@ export default function ImportExport() {
   const [error, setError] = useState('');
 
   const token = localStorage.getItem('access_token');
-  const API_BASE = 'http://127.0.0.1:8000/api';
+  const API_BASE = 'https://personal-finance-api-ce7h.onrender.com/api';
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);

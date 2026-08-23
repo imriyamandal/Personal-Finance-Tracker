@@ -12,7 +12,7 @@ export default function Budgets() {
   const [month, setMonth] = useState(new Date().toISOString().split('T')[0].substring(0, 7)); // YYYY-MM
 
   const token = localStorage.getItem('access_token');
-  const API_BASE = 'http://127.0.0.1:8000/api';
+  const API_BASE = 'https://personal-finance-api-ce7h.onrender.com/api';
 
   useEffect(() => {
     fetchBudgets();

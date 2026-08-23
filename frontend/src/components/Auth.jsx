@@ -8,7 +8,7 @@ export default function Auth({ onLoginSuccess }) {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_BASE = 'http://127.0.0.1:8000/api';
+  const API_BASE = 'https://personal-finance-api-ce7h.onrender.com/api';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
