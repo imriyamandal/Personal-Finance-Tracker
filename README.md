@@ -302,7 +302,7 @@ CI builds run these checks automatically on every code push to GitHub.
 The project is structured to deploy smoothly on modern hosting providers:
 * **Frontend**: Deploy `frontend/` as a static site to **Vercel** or **Netlify**.
 * **Backend**: Deploy `backend/` using Docker containers on **Render**, **Railway**, or **AWS ECS**.
-* **Live Previews**: [https://personal-finance-demo.vercel.app](https://personal-finance-tracker-ruddy-theta.vercel.app/)
+* **Live Previews**: [https://personal-finance-demo.vercel.app](https://personal-finance-tracker-ruddy-theta.vercel.app/) *(Placeholder)*
 
 ---
 
