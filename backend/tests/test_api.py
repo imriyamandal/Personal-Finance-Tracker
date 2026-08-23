@@ -9,8 +9,10 @@ os.environ["DB_PATH"] = TEST_DB_PATH
 
 
 # Add backend directory to python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "app")))
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "app")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
 
 # Import app, db managers
 from app.main import app

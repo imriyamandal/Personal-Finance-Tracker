@@ -27,6 +27,8 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Pytest suite
+      env:
+        PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/backend:${{ github.workspace }}/backend/app
       run: |
         python -m pytest backend/tests/test_api.py
 
