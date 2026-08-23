@@ -26,12 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Set DB_PATH environment variable
-      run: echo "DB_PATH=data/test_finance.db" >> $GITHUB_ENV
-
     - name: Run Pytest suite
       run: |
-        pytest backend/tests/test_api.py
+        python -m pytest backend/tests/test_api.py
 
   frontend-build:
     name: Frontend build verification

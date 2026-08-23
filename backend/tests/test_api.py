@@ -4,8 +4,9 @@ import pytest
 from fastapi.testclient import TestClient
 
 # Configure test database before importing database managers
-TEST_DB_PATH = "data/test_finance.db"
+TEST_DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "data", "test_finance.db"))
 os.environ["DB_PATH"] = TEST_DB_PATH
+
 
 # Add backend directory to python path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "app")))
