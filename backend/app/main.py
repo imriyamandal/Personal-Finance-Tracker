@@ -24,7 +24,10 @@ app = FastAPI(
 # Configure CORS Middleware for Frontend SPA connectivity
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Allow all origins for dev; specify ports later in production
+    allow_origins=[
+        "http://localhost:5173",
+        "https://your-vercel-app.vercel.app"
+    ], # Allow all origins for dev; specify ports later in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
