@@ -191,10 +191,10 @@ To configure local variables, copy `.env.example` to `.env` and fill in the valu
 
 ```bash
 # JWT Secret Key for token signing (generate a secure random hex key in production)
-JWT_SECRET_KEY=7963d3fb67a07cd0be5991823908b8b0e89e02c918ffbc66ea374df616ad59f5
+JWT_SECRET_KEY=
 
 # Database path location
-DB_PATH=data/finance.db
+DB_PATH=
 
 # Server port configs
 PORT=8000
